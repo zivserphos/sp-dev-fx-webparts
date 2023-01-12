@@ -1,0 +1,45 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "Sample Metadata",
+    "iconPath": "assets/appicon.png",
+    "id": "74116799-8800-4c3f-abfe-fb72bdcb551c",
+    "version": "1.0.0.0",
+    "supportedLocales": [
+      "en-us",
+      "fr-fr"
+    ],
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "PnP",
+      "websiteUrl": "https://pnp.github.io/",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.16.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Shows how to use metadata in a SharePoint Framework solution."
+      },
+      "longDescription": {
+        "default": "Shows how to use metadata in a SharePoint Framework solution.\n\nIt demonstrates how to define app metadata and web part metadata."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-metadata Feature",
+        "description": "The feature that activates elements of the react-metadata solution.",
+        "id": "acbcd0ac-5600-4c8f-a7fa-41f311deb9c1",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-metadata.sppkg"
+  }
+}

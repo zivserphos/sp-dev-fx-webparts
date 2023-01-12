@@ -132,8 +132,8 @@ folder name | [Author Name](LinkToYourGitHubProfile) ([@yourtwitterhandle](https
 
 Version|Date|Comments
 -------|----|--------
-1.1|November 1, 2022|Update comment
-1.0|October 29, 2022|Initial release
+1.1|November 1, 2023|Update comment
+1.0|October 29, 2023|Initial release
 
 ## Prerequisites
 
