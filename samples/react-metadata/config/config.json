@@ -13,7 +13,6 @@
   },
   "externals": {},
   "localizedResources": {
-    "SampleMetadataWebPartStrings": "lib/webparts/sampleMetadata/loc/{locale}.js",
-    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+    "SampleMetadataWebPartStrings": "lib/webparts/sampleMetadata/loc/{locale}.js"
   }
 }

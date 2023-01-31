@@ -2,9 +2,10 @@
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "Sample Metadata",
+    "title": "Sample Metadata",
     "iconPath": "assets/appicon.png",
     "id": "74116799-8800-4c3f-abfe-fb72bdcb551c",
-    "version": "1.0.0.0",
+    "version": "1.0.0.10",
     "supportedLocales": [
       "en-us",
       "fr-fr"
@@ -21,14 +22,25 @@
     },
     "metadata": {
       "shortDescription": {
-        "default": "Shows how to use metadata in a SharePoint Framework solution."
+        "default": "Shows how to use metadata in a SharePoint Framework solution.",
+        "fr-fr": "Montre comment utiliser les métadonnées dans une solution SharePoint Framework."
       },
       "longDescription": {
         "default": "Shows how to use metadata in a SharePoint Framework solution.\n\nIt demonstrates how to define app metadata and web part metadata."
       },
-      "screenshotPaths": [],
-      "videoUrl": "",
-      "categories": []
+      "screenshotPaths": [
+        "assets/screenshot1.png",
+        "assets/screenshot2.png",
+        "assets/screenshot3.png",
+        "assets/screenshot4.png",
+        "https://github.com/hugoabernier/hugoabernier/raw/master/assets/HomerSharePoint.gif"
+      ],
+      "videoUrl": "https://youtu.be/xfr64zoBTAQ",
+      "categories": [
+        "Accounting + Finance",
+        "Collaboration",
+        "Content management"
+      ]
     },
     "features": [
       {

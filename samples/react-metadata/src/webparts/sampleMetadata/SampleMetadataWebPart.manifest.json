@@ -3,26 +3,77 @@
   "id": "0d53f472-3cf6-4f40-b1de-a2ec7d2b03c4",
   "alias": "SampleMetadataWebPart",
   "componentType": "WebPart",
-
   // The "*" signifies that the version should be taken from the package.json
   "version": "*",
   "manifestVersion": 2,
-
   // If true, the component can only be installed on sites where Custom Script is allowed.
   // Components that allow authors to embed arbitrary script code should set this to true.
   // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
   "requiresCustomScript": false,
-  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
-  "supportsThemeVariants": true,
+   "supportsThemeVariants": true,
+   "supportsFullBleed": true,
+   "canUpdateConfiguration": false,
+  "supportedHosts": [
+    "SharePointWebPart",
+    "TeamsPersonalApp",
+    "TeamsTab",
+    "SharePointFullPage"
+  ],
 
-  "preconfiguredEntries": [{
-    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Advanced
-    "group": { "default": "Advanced" },
-    "title": { "default": "Sample Metadata" },
-    "description": { "default": "Sample Metadata description" },
-    "officeFabricIconFontName": "Page",
-    "properties": {
-      "description": "Sample Metadata"
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Advanced
+      "group": {
+        "default": "Advanced"
+      },
+      "title": {
+        "default": "Color wheel"
+      },
+      "description": {
+        "default": "Add an interactive color wheel to your page."
+      },
+      "officeFabricIconFontName": "Color",
+      "tags": [
+        "Hue",
+        "Saturation",
+        "Pantone",
+        "Grayscale"
+      ],
+      "properties": {
+        "mode": "ColorWheel"
+      }
+    },
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Advanced
+      "group": {
+        "default": "Advanced"
+      },
+      "title": {
+        "default": "Complementary colors"
+      },
+      "description": {
+        "default": "Add an interactive tool to find complementary colors."
+      },
+      "officeFabricIconFontName": "BucketColor",
+      "properties": {
+        "mode": "Complementary"
+      }
+    },
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Advanced
+      "group": {
+        "default": "Advanced"
+      },
+      "title": {
+        "default": "Contrast ratios"
+      },
+      "description": {
+        "default": "Add an interactive tool to calculate contrast ratios between two colors."
+      },
+      "officeFabricIconFontName": "Contrast",
+      "properties": {
+        "mode": "Accessibility"
+      }
     }
-  }]
+  ]
 }
