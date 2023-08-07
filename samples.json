@@ -11263,19 +11263,19 @@
         "value": "1.10"
       }
     ],
+    "authors": [
+      {
+        "gitHubAccount": "pnp",
+        "pictureUrl": "https://github.com/pnp.png",
+        "name": "Microsoft 365 & Power Platform Community"
+      }
+    ],
     "thumbnails": [
       {
         "type": "image",
         "order": 100,
         "url": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-lob-integration.png",
         "alt": "LOB Integration web part"
-      }
-    ],
-    "authors": [
-      {
-        "gitHubAccount": "pnp",
-        "pictureUrl": "https://github.com/pnp.png",
-        "name": "Microsoft 365 & Power Platform Community"
       }
     ],
     "references": [
@@ -23939,7 +23939,7 @@
     "metadata": [
       {
         "key": "CLIENT-SIDE-DEV",
-        "value": "TypeScript,React"
+        "value": "React"
       },
       {
         "key": "SPFX-VERSION",
@@ -27229,6 +27229,13 @@
     "products": [
       "SharePoint"
     ],
+    "authors": [
+      {
+        "gitHubAccount": "AriGunawan",
+        "pictureUrl": "https://github.com/AriGunawan.png",
+        "name": "Ari Gunawan"
+      }
+    ],
     "metadata": [
       {
         "key": "CLIENT-SIDE-DEV",
@@ -27241,13 +27248,6 @@
     ],
     "categories": [
       "SPFX-APPLICATION-EXTENSION"
-    ],
-    "authors": [
-      {
-        "gitHubAccount": "AriGunawan",
-        "pictureUrl": "https://github.com/AriGunawan.png",
-        "name": "Ari Gunawan"
-      }
     ],
     "thumbnails": [
       {
@@ -27276,7 +27276,7 @@
     "metadata": [
       {
         "key": "CLIENT-SIDE-DEV",
-        "value": "TypeScript,React"
+        "value": "React"
       },
       {
         "key": "SPFX-VERSION",
