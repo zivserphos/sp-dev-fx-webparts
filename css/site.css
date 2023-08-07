@@ -210,21 +210,28 @@
 
 #loading { 
     display: flex;
+    gap: 12px;
  }
 
 #loading .sample-preview {
-    border-radius: 5px 5px 0 0;
-    height: 250px;
-    max-height: 250px;
     background-color: #f6f7f8;;
-    width: 100%;
-    position: relative;
-    animation: shim infinite 1.2s linear;
 }
 
 #loading .sample-title {
     width: 75%;
     width: 200px;
+}
+
+#loading .sample-author{
+    width: 80px;
+    margin-bottom: 4px;
+}
+
+#loading .sample-description {
+    width:240px;
+}
+#loading .sample-date {
+    width: 145px;
 }
 
 .shimmer .author-image {
