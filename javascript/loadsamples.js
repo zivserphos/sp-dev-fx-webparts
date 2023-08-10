@@ -9,6 +9,13 @@ if (window.location.host.toLowerCase() !== "pnp.github.io") {
 }
 
 /**
+ * Preloads thumbnail images for a more responsive experience
+ */
+function preload_image(im_url) {
+  let img = new Image();
+  img.src = im_url;
+}
+/**
  * Reads a sample metadata and returns a pre-populated HTML element
  * @param {*} sample 
  * @returns 
@@ -26,6 +33,10 @@ function loadSample(sample, filter) {
       thumbnail = sample.thumbnails[0].url;
     }
 
+    // if the thumbnail exists, preload it
+    if (thumbnail) {
+      preload_image(thumbnail);
+    }
 
     var sampleType = "";
     var sampleTypeName = "";
