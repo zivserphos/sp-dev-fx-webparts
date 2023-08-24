@@ -30,7 +30,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
   private readonly logSource = "ContentQueryWebPart.ts";
 
   /***************************************************************************
-   * Service used to perform REST calls 
+   * Service used to perform REST calls
    ***************************************************************************/
    private ContentQueryService: IContentQueryService;
 
@@ -52,11 +52,13 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
   private templateUrlTextField: IPropertyPaneField<IPropertyPaneTextFieldProps>;
   private externalScripts: IPropertyPaneField<IPropertyPaneTextFieldProps>;
 
-  
+
   /***************************************************************************
    * Returns the WebPart's version
    ***************************************************************************/
-  protected get dataVersion(): Version {
+// @ts-ignore
+
+  protected get dataVersion(): Version | any {
     return Version.parse('1.0.11');
   }
 
@@ -66,6 +68,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
    ***************************************************************************/
   protected onInit(): Promise<void> {
     return new Promise<void>((resolve, reject) => {
+      // @ts-ignore
       this.ContentQueryService = new ContentQueryService(this.context, this.context.spHttpClient);
       this.properties.webUrl = this.properties.siteUrl || this.properties.webUrl ? this.properties.webUrl : this.context.pageContext.web.absoluteUrl.toLocaleLowerCase().trim();
       this.properties.siteUrl = this.properties.siteUrl ? this.properties.siteUrl : this.context.pageContext.site.absoluteUrl.toLowerCase().trim();
@@ -89,7 +92,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
       filters: this.properties.filters,
       viewFields: this.properties.viewFields,
     };
-    
+
     const element: React.ReactElement<IContentQueryProps> = React.createElement(ContentQuery,
       {
         onLoadTemplate: this.loadTemplate.bind(this),
@@ -106,7 +109,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
     );
     ReactDom.render(element, this.domElement);
   }
-  
+
 
   /***************************************************************************
    * Loads the toolpart configuration
@@ -171,7 +174,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
       disabled: thirdCascadingLevelDisabled,
       strings: strings.queryFilterPanelStrings
     });
-    
+
     // Creates a custom PropertyPaneAsyncChecklist for the viewFields property
     this.viewFieldsChecklist = new PropertyPaneAsyncChecklist(ContentQueryConstants.propertyViewFields, {
       loadItems: this.loadViewFieldsChecklistItems.bind(this),
@@ -310,7 +313,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
 
 
   /***************************************************************************
-   * Loads the HandleBars context based on the specified query 
+   * Loads the HandleBars context based on the specified query
    ***************************************************************************/
   private loadTemplateContext(querySettings:IQuerySettings, callTimeStamp: number): Promise<IContentQueryTemplateContext> {
     return this.ContentQueryService.getTemplateContext(querySettings, callTimeStamp);
@@ -395,7 +398,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
     Log.verbose(this.logSource, "WebPart property '" + propertyPath + "' has changed, refreshing WebPart...", this.context.serviceScope);
     let rerenderTemplateTextDialog = false;
     const oldValue = get(this.properties, propertyPath);
-    
+
     // Stores the new value in web part properties
     update(this.properties, propertyPath, (): any => { return newValue; });
     this.onPropertyPaneFieldChanged(propertyPath, oldValue, newValue);
@@ -433,7 +436,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
   private onTemplateUrlChange(value: string): Promise<String> {
     Log.verbose(this.logSource, "WebPart property 'templateUrl' has changed, refreshing WebPart...", this.context.serviceScope);
 
-    return new Promise<string>((resolve, reject) => { 
+    return new Promise<string>((resolve, reject) => {
 
       // Doesn't raise any error if file is empty (otherwise error message will show on initial load...)
       if(isEmpty(value)) {
@@ -444,17 +447,17 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
         resolve(strings.ErrorTemplateExtension);
       }
       // Resolves an error if the file doesn't answer a simple head request
-      else {  
+      else {
         this.ContentQueryService.ensureFileResolves(value).then((isFileResolving:boolean) => {
           resolve('');
         })
         .catch((error) => {
           resolve(Text.format(strings.ErrorTemplateResolve, error));
-        });    
+        });
       }
     });
   }
-  
+
 
   /***************************************************************************
    * Validates the itemLimit property
@@ -462,7 +465,7 @@ export default class ContentQueryWebPart extends BaseClientSideWebPart<IContentQ
   private onItemLimitChange(value: string): Promise<String> {
     Log.verbose(this.logSource, "WebPart property 'itemLimit' has changed, refreshing WebPart...", this.context.serviceScope);
 
-    return new Promise<string>((resolve, reject) => {  
+    return new Promise<string>((resolve, reject) => {
       // Resolves an error if the file isn't a valid number between 1 to 999
       let parsedValue = parseInt(value);
       let isNumeric = !isNaN(parsedValue) && isFinite(parsedValue);

@@ -21,7 +21,7 @@ build.configureWebpack.mergeConfig({
     generatedConfiguration.node = {
       fs: 'empty'
     }
-    
+
     return generatedConfiguration;
   }
 });

@@ -35,7 +35,7 @@ export class ContentQueryService implements IContentQueryService {
      private searchService: SearchService;
      private peoplePickerService: PeoplePickerService;
      private taxonomyService: TaxonomyService;
-     
+
 
     /**************************************************************************************************
      * Stores the first async calls locally to avoid useless redundant calls
@@ -66,7 +66,7 @@ export class ContentQueryService implements IContentQueryService {
 
 
     /**************************************************************************************************
-     * Generates the final template context that will be given to handlebars 
+     * Generates the final template context that will be given to handlebars
      * @param querySettings : The settings required for generating the CAML query
      * @param callTimeStamp : The time stamp of the call in order to fight concurency
      **************************************************************************************************/
@@ -77,7 +77,7 @@ export class ContentQueryService implements IContentQueryService {
 
             // Initializes the base template context
             let templateContext:IContentQueryTemplateContext = {
-                pageContext: this.context.pageContext,
+                pageContext: this.context.pageContext ,
                 items: [],
                 accessDenied: false,
                 webNotFound: false,
@@ -140,7 +140,7 @@ export class ContentQueryService implements IContentQueryService {
                     else
                     {
                         resolve(response.text());
-                    }                    
+                    }
                 }
                 else {
                     reject(response.statusText);
@@ -152,10 +152,10 @@ export class ContentQueryService implements IContentQueryService {
         });
     }
 
-    
+
     /**************************************************************************************************
      * Gets the available webs for the current user
-     **************************************************************************************************/   
+     **************************************************************************************************/
     public getSiteUrlOptions(): Promise<IDropdownOption[]> {
         Log.verbose(this.logSource, "Loading dropdown options for toolpart property 'Site Url'...", this.context.serviceScope);
 
@@ -166,7 +166,7 @@ export class ContentQueryService implements IContentQueryService {
 
         // Otherwise, performs a REST call to get the data
         return new Promise<IDropdownOption[]>((resolve,reject) => {
-            let serverUrl = Text.format("{0}//{1}", window.location.protocol, window.location.hostname); 
+            let serverUrl = Text.format("{0}//{1}", window.location.protocol, window.location.hostname);
 
             this.searchService.getSitesStartingWith(serverUrl)
                 .then((urls) => {
@@ -175,7 +175,7 @@ export class ContentQueryService implements IContentQueryService {
 
                     // Builds the IDropdownOption[] based on the urls
                     let options:IDropdownOption[] = [ { key: "", text: strings.SiteUrlFieldPlaceholder } ];
-                    let urlOptions:IDropdownOption[] = urls.sort().map((url) => { 
+                    let urlOptions:IDropdownOption[] = urls.sort().map((url) => {
                         let serverRelativeUrl = !isEmpty(url.replace(serverUrl, '')) ? url.replace(serverUrl, '') : '/';
                         return { key: url, text: serverRelativeUrl };
                     });
@@ -194,7 +194,7 @@ export class ContentQueryService implements IContentQueryService {
     /**************************************************************************************************
      * Gets the available webs for the current user
      * @param siteUrl : The url of the site from which webs must be loaded from
-     **************************************************************************************************/   
+     **************************************************************************************************/
     public getWebUrlOptions(siteUrl: string): Promise<IDropdownOption[]> {
         Log.verbose(this.logSource, "Loading dropdown options for toolpart property 'Web Url'...", this.context.serviceScope);
 
@@ -217,10 +217,10 @@ export class ContentQueryService implements IContentQueryService {
                     if(siteUrl.toLowerCase().trim() === this.context.pageContext.site.absoluteUrl.toLowerCase().trim()) {
                         this.ensureUrl(urls, this.context.pageContext.web.absoluteUrl);
                     }
-                    
+
                     // Builds the IDropdownOption[] based on the urls
                     let options:IDropdownOption[] = [ { key: "", text: strings.WebUrlFieldPlaceholder } ];
-                    let urlOptions:IDropdownOption[] = urls.sort().map((url) => { 
+                    let urlOptions:IDropdownOption[] = urls.sort().map((url) => {
                         let siteRelativeUrl = !isEmpty(url.replace(siteUrl, '')) ? url.replace(siteUrl, '') : '/';
                         return { key: url, text: siteRelativeUrl };
                     });
@@ -239,7 +239,7 @@ export class ContentQueryService implements IContentQueryService {
     /**************************************************************************************************
      * Gets the available lists from the specified web
      * @param webUrl : The url of the web from which lists must be loaded from
-     **************************************************************************************************/   
+     **************************************************************************************************/
     public getListTitleOptions(webUrl: string): Promise<IDropdownOption[]> {
         Log.verbose(this.logSource, "Loading dropdown options for toolpart property 'List Title'...", this.context.serviceScope);
 
@@ -262,7 +262,7 @@ export class ContentQueryService implements IContentQueryService {
                 this.listTitleOptions = options;
                 resolve(options);
             })
-            .catch((error) => { 
+            .catch((error) => {
                 reject(this.getErrorMessage(webUrl, error));
             });
         });
@@ -273,7 +273,7 @@ export class ContentQueryService implements IContentQueryService {
      * Gets the available fields out of the specified web/list
      * @param webUrl : The url of the web from which the list comes from
      * @param listId : The id of the list from which the field must be loaded from
-     **************************************************************************************************/ 
+     **************************************************************************************************/
     public getOrderByOptions(webUrl: string, listId: string): Promise<IDropdownOption[]> {
         Log.verbose(this.logSource, "Loading dropdown options for toolpart property 'Order By'...", this.context.serviceScope);
 
@@ -326,8 +326,8 @@ export class ContentQueryService implements IContentQueryService {
         return new Promise<IQueryFilterField[]>((resolve, reject) => {
             this.listService.getListFields(webUrl, listId, ['InternalName', 'Title', 'TypeAsString'], 'Title').then((data:any) => {
                 let fields:any[] = data.value;
-                let options:IQueryFilterField[] = fields.map((field) => { return { 
-                    internalName: field.InternalName, 
+                let options:IQueryFilterField[] = fields.map((field) => { return {
+                    internalName: field.InternalName,
                     displayName: field.Title,
                     type: this.getFieldTypeFromString(field.TypeAsString)
                 }; });
@@ -363,8 +363,8 @@ export class ContentQueryService implements IContentQueryService {
         return new Promise<IChecklistItem[]>((resolve, reject) => {
             this.listService.getListFields(webUrl, listId, ['InternalName', 'Title'], 'Title').then((data:any) => {
                 let fields:any[] = data.value;
-                let items:IChecklistItem[] = fields.map((field) => { return { 
-                    id: field.InternalName, 
+                let items:IChecklistItem[] = fields.map((field) => { return {
+                    id: field.InternalName,
                     label: Text.format("{0} \{\{{1}\}\}", field.Title, field.InternalName)
                 }; });
                 this.viewFields = items;
@@ -390,7 +390,7 @@ export class ContentQueryService implements IContentQueryService {
         return new Promise<IPersonaProps[]>((resolve, reject) => {
             this.peoplePickerService.getUserSuggestions(webUrl, filterText, 1, 15, limitResults).then((data) => {
                 let users: any[] = JSON.parse(data.value);
-                let userSuggestions:IPersonaProps[] = users.map((user) => { return { 
+                let userSuggestions:IPersonaProps[] = users.map((user) => { return {
                     primaryText: user.DisplayText,
                     optionalText: user.EntityData.SPUserID || user.EntityData.SPGroupID
                 }; });
@@ -407,7 +407,7 @@ export class ContentQueryService implements IContentQueryService {
      * Returns the taxonomy suggestions based on the user entered picker input
      * @param webUrl : The web url on which to look for the list
      * @param listId : The id of the list on which to look for the taxonomy field
-     * @param field : The IQueryFilterField which contains the selected taxonomy field 
+     * @param field : The IQueryFilterField which contains the selected taxonomy field
      * @param filterText : The filter text entered by the user
      * @param currentTerms : The current terms
      **************************************************************************************************/
@@ -426,7 +426,7 @@ export class ContentQueryService implements IContentQueryService {
             });
         });
     }
-    
+
 
     /*************************************************************************************************
      * Performs a GET request against the specified file path and returns whether it resolved or not
@@ -435,7 +435,7 @@ export class ContentQueryService implements IContentQueryService {
     public ensureFileResolves(filePath: string): Promise<{}> {
         Log.verbose(this.logSource, Text.format("Checking if file exists at url '{0}'...", filePath), this.context.serviceScope);
 
-        return new Promise<boolean>((resolve, reject) => { 
+        return new Promise<boolean>((resolve, reject) => {
             this.spHttpClient.get(filePath, SPHttpClient.configurations.v1).then((response: SPHttpClientResponse) => {
                 if(response.ok) {
                     resolve();
@@ -446,7 +446,7 @@ export class ContentQueryService implements IContentQueryService {
             })
             .catch((error) => {
                 reject(error);
-            }); 
+            });
         });
     }
 
@@ -510,16 +510,16 @@ export class ContentQueryService implements IContentQueryService {
 
 
     /**************************************************************************************************
-     * Resets the stored 'list title' options 
+     * Resets the stored 'list title' options
      **************************************************************************************************/
     public clearCachedWebUrlOptions() {
         Log.verbose(this.logSource, "Clearing cached dropdown options for toolpart property 'Web Url'...", this.context.serviceScope);
         this.webUrlOptions = null;
     }
-    
+
 
     /**************************************************************************************************
-     * Resets the stored 'list title' options 
+     * Resets the stored 'list title' options
      **************************************************************************************************/
     public clearCachedListTitleOptions() {
         Log.verbose(this.logSource, "Clearing cached dropdown options for toolpart property 'List Title'...", this.context.serviceScope);
@@ -600,7 +600,7 @@ export class ContentQueryService implements IContentQueryService {
         return errorMessage;
     }
 
-    
+
     /**************************************************************************************************
      * Returns a field type enum value based on the provided string type
      * @param fieldTypeStr : The field type as a string
@@ -620,7 +620,7 @@ export class ContentQueryService implements IContentQueryService {
 
             case 'lookup':                  fieldType = QueryFilterFieldType.Lookup;
                                             break;
-            
+
             case 'url':                     fieldType = QueryFilterFieldType.Url;
                                             break;
 

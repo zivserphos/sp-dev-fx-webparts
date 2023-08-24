@@ -8,6 +8,7 @@ import AceEditor 								from 'react-ace';
 import styles                                   from './TextDialog.module.scss';
 import './AceEditor.module.scss';
 
+
 import 'brace';
 import 'brace/mode/html';
 import 'brace/theme/monokai';
@@ -17,8 +18,8 @@ export class TextDialog extends React.Component<ITextDialogProps, ITextDialogSta
 
     /*************************************************************************************
      * Component's constructor
-     * @param props 
-     * @param state 
+     * @param props
+     * @param state
      *************************************************************************************/
     constructor(props: ITextDialogProps, state: ITextDialogState) {
         super(props);
@@ -79,7 +80,7 @@ export class TextDialog extends React.Component<ITextDialogProps, ITextDialogSta
         return (
             <div>
 				<Label>{ this.props.strings.dialogButtonLabel }</Label>
-				
+
                 <Button label={ this.props.strings.dialogButtonLabel } onClick={ this.showDialog.bind(this) }>{ this.props.strings.dialogButtonText }</Button>
 
 				<Dialog type={ DialogType.normal }
@@ -89,7 +90,8 @@ export class TextDialog extends React.Component<ITextDialogProps, ITextDialogSta
 						subText={ this.props.strings.dialogSubText }
 						isBlocking={ true }
 						containerClassName={ 'ms-dialogMainOverride ' + styles.textDialog }>
-				
+
+          {/* eslint-disable-next-line */}
 					<AceEditor
 						width="100%"
 						mode="html"

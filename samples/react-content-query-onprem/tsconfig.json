@@ -5,12 +5,13 @@
     "module": "commonjs",
     "jsx": "react",
     "declaration": true,
+    "skipLibCheck": true,
     "sourceMap": true,
     "experimentalDecorators": true,
     "types": [
       "es6-promise",
       "es6-collections",
-      "webpack-env"
+      "webpack-env",
     ]
   }
 }

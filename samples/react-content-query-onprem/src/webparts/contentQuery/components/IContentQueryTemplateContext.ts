@@ -1,7 +1,7 @@
 import { PageContext } from '@microsoft/sp-page-context';
 
 export interface IContentQueryTemplateContext {
-	pageContext: PageContext;
+	pageContext: PageContext | any;
 	items: any[];
 	accessDenied: boolean;
 	webNotFound: boolean;

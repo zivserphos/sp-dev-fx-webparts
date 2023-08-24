@@ -17,8 +17,8 @@ export class QueryFilterPanel extends React.Component<IQueryFilterPanelProps, IQ
 
     /*************************************************************************************
      * Component's constructor
-     * @param props 
-     * @param state 
+     * @param props
+     * @param state
      *************************************************************************************/
     constructor(props: IQueryFilterPanelProps, state: IQueryFilterPanelState) {
         super(props);
@@ -72,7 +72,7 @@ export class QueryFilterPanel extends React.Component<IQueryFilterPanelProps, IQ
      * Loads the available fields asynchronously
      *************************************************************************************/
     private loadFields(): void {
-        
+
         this.setState((prevState: IQueryFilterPanelState, props: IQueryFilterPanelProps): IQueryFilterPanelState => {
             prevState.loading = true;
             prevState.error = null;
@@ -86,7 +86,7 @@ export class QueryFilterPanel extends React.Component<IQueryFilterPanelProps, IQ
                 prevState.filters = this.getDefaultFilters();
                 return prevState;
             });
-        }) 
+        })
         .catch((error: any) => {
             this.setState((prevState: IQueryFilterPanelState, props: IQueryFilterPanelProps): IQueryFilterPanelState => {
                 prevState.loading = false;
@@ -105,7 +105,7 @@ export class QueryFilterPanel extends React.Component<IQueryFilterPanelProps, IQ
         let isWorthNotifyingParent = true;
         let oldFilter = this.state.filters.filter((i) => { return i.index == filter.index; })[0];
         let oldFilterIndex = this.state.filters.indexOf(oldFilter);
-        
+
         if(this.props.trimEmptyFiltersOnChange && this.isFilterEmpty(oldFilter) && this.isFilterEmpty(filter)) {
             isWorthNotifyingParent = false;
         }
@@ -139,7 +139,7 @@ export class QueryFilterPanel extends React.Component<IQueryFilterPanelProps, IQ
 
         // If the filter has a null or empty value
         if(filter.value == null || isEmpty(filter.value.toString())) {
-            
+
             // And has no date time expression
             if(isEmpty(filter.expression)) {
 
@@ -174,7 +174,7 @@ export class QueryFilterPanel extends React.Component<IQueryFilterPanelProps, IQ
 
 
     private sortFiltersByIndex(filters:IQueryFilter[]): IQueryFilter[] {
-        return filters.sort((a, b) => { 
+        return filters.sort((a, b) => {
             return a.index - b.index;
         });
     }
@@ -206,12 +206,12 @@ export class QueryFilterPanel extends React.Component<IQueryFilterPanelProps, IQ
 
                 {loading}
 
-                { !this.state.loading && 
+                { !this.state.loading &&
                     <div className={styles.queryFilterPanelItems}>{filters}</div>
                 }
 
-                { !this.state.loading && 
-                    <Button buttonType={ButtonType.primary} onClick={this.onAddFilterClick.bind(this)} disabled={this.props.disabled} icon='Add'>{this.props.strings.addFilterLabel}</Button> 
+                { !this.state.loading &&
+                    <Button buttonType={ButtonType.primary} onClick={this.onAddFilterClick.bind(this)} disabled={this.props.disabled} icon='Add'>{this.props.strings.addFilterLabel}</Button>
                 }
 
                 {error}
