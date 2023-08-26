@@ -64,7 +64,7 @@ export class SearchStoreStatic extends EventEmitter {
 	 * @param {string} url
 	 */
 	public GetSearchData (context: IWebPartContext, url: string): Promise<ISearchResults> {
-		return context.spHttpClient.get(url, SPHttpClient.configurations.v1).then((res: Response) => {
+		return context.spHttpClient.get(url, SPHttpClient.configurations.v1).then((res: Response | any) => {
 			return res.json();
 		});
 	}
