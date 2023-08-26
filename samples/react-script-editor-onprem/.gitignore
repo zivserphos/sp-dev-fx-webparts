@@ -34,3 +34,5 @@ obj
 *.cer
 # .PEM Certificates
 *.pem
+
+react-script-editor-onprem

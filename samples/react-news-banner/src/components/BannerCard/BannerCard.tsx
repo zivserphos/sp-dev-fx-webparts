@@ -16,7 +16,7 @@ export const BannerCard: React.FunctionComponent<IBannerCardProps> = (
           isSelected ? styles.documentCardSeleted : styles.documentCard
         }
         onClick={() => {
-          props.onSeletedItem(item);
+          props.onSeletedItem && props.onSeletedItem(item);
         }}
       >
         <div className={styles.subTitleNews}>{_date}</div>

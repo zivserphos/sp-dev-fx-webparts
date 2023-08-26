@@ -47,7 +47,7 @@ export const useList = (): retrunFunctions => {
     } = seletedProperties;
     const listItems: IListItem[] = [];
     if (!listId && !sites) return [];
-    const web = new Web(sites[0].url);
+    const web = new Web(sites[0].url || '');
     const sortField: string = dateFieldName ?? "Title";
 
     const _listResults = await web.lists

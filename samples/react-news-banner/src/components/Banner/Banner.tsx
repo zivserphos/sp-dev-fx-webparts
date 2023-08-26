@@ -168,7 +168,7 @@ export const Banner: React.FunctionComponent<IBannerProps> = (
         </div>
         <div className={styles.list}>
           {items.map((item, i) => {
-            const _isSeleted: boolean = item.id === selectedItem.id;
+            const _isSeleted: boolean | undefined = item.id === selectedItem?.id;
             return (
               <div key={i}>
                 {i > 0 && i < items.length ? (

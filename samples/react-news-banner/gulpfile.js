@@ -8,11 +8,11 @@ const TerserPlugin = require('terser-webpack-plugin-legacy');
 build.addSuppression(/Warning - \[sass\] The local CSS class .* is not camelCase and will not be type-safe./gi);
 
 // force use of projects specified typescript version
-const typeScriptConfig = require('@microsoft/gulp-core-build-typescript/lib/TypeScriptConfiguration');
-typeScriptConfig.TypeScriptConfiguration.setTypescriptCompiler(require('typescript'));
+// const typeScriptConfig = require('@microsoft/gulp-core-build-typescript/lib/TypeScriptConfiguration');
+// typeScriptConfig.TypeScriptConfiguration.setTypescriptCompiler(require('typescript'));
 
 // disable tslint
-build.tslint.enabled = false;
+// build.tslint.enabled = false;
 
 const eslint = require('gulp-eslint');
 

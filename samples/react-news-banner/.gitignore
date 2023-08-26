@@ -25,6 +25,8 @@ coverage
 bin
 obj
 
+react-news-banner
+
 # Resx Generated Code
 *.resx.ts
 

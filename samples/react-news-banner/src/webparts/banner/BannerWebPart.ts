@@ -48,12 +48,12 @@ export default class BannerWebPart extends BaseClientSideWebPart<
   private textColumns: IPropertyPaneDropdownOption[] = [];
   private dateColumns: IPropertyPaneDropdownOption[] = [];
   private URLColumns: IPropertyPaneDropdownOption[] = [];
-  private columns: IPropertyPaneDropdownOption[] = [];
+  columns: IPropertyPaneDropdownOption[] = [];
   private lists: IPropertyPaneDropdownOption[] = [];
 
   private listColumns: ISPColumn[] = [];
 
-  private _messageError: string = undefined;
+  _messageError: string | undefined = undefined;
 
   protected async onInit(): Promise<void> {
     sp.setup({
@@ -123,7 +123,7 @@ export default class BannerWebPart extends BaseClientSideWebPart<
       (this.properties.sites && this.properties.sites.length)
     ) {
       if (!this.lists.length) {
-        await this.addLists(this.properties.sites[0].url);
+        await this.addLists(this.properties.sites[0].url || '');
         this.context.propertyPane.refresh();
       }
       if (!this.listColumns.length && this.properties.listId) {
@@ -171,7 +171,7 @@ export default class BannerWebPart extends BaseClientSideWebPart<
         return;
       } else {
         this.context.propertyPane.refresh();
-        await this.addLists(value[0].url);
+        await this.addLists(value[0].url || '');
         this.context.propertyPane.refresh();
       }
     }
@@ -182,7 +182,7 @@ export default class BannerWebPart extends BaseClientSideWebPart<
       this.listColumns = [];
 
       this.listColumns = await getListColumns(
-        this.properties.sites[0].url,
+        this.properties.sites[0].url || '',
         newValue
       );
 

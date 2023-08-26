@@ -12,3 +12,5 @@ temp
 .yo-rc.json
 gulpfile.js
 tsconfig.json
+
+react-content-query-onprem
