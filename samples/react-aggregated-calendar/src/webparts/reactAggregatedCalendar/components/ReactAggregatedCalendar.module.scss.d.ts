@@ -1,0 +1,23 @@
+declare const styles: {
+    closeIconFocus: string;
+    calloutInnerEventContent: string;
+    msCalloutclose: string;
+    msCalloutheader: string;
+    msCallouttitle: string;
+    msCalloutinner: string;
+    msCalloutsubText: string;
+    reactAggregatedCalendar: string;
+    legend: string;
+    outerLegendDiv: string;
+    innerLegendDiv: string;
+    container: string;
+    row: string;
+    column: string;
+    'ms-Grid': string;
+    title: string;
+    subTitle: string;
+    description: string;
+    button: string;
+    label: string;
+};
+export default styles;

@@ -1,6 +1,8 @@
 @import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
 @import '~office-ui-fabric-react/dist/sass/_References.scss';
-@import '~office-ui-fabric-react/dist/sass/Fabric.scss';
+// @import '~office-ui-fabric-react/dist/sass/Fabric.scss';
+
+
 .closeIconFocus:focus {
   outline: none;
 }

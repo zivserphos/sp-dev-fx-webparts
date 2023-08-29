@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "forceConsistentCasingInFileNames": true,
+    "strict": false,
     "module": "commonjs",
     "jsx": "react",
     "declaration": true,

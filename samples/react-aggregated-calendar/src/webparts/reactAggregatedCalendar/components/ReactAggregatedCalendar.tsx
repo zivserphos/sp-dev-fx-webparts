@@ -187,7 +187,7 @@ export default class ReactAggregatedCalendar
   private renderContents() {
     let containerEl: JQuery = $('#aggregatedCalendarComp');
     let eventSourcesArray: any[] = [];
-    const dataService = (Environment.type === EnvironmentType.Test
+    const dataService: any = (Environment.type === EnvironmentType.Test
       || Environment.type === EnvironmentType.Local) ? new AggregatedCalendarMockService() :
       this.props.context.serviceScope.consume(AggregatedCalendarService.serviceKey);
     console.log(this.props.selectedCalendarLists);

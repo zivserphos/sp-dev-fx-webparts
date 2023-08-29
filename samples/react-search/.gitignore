@@ -16,6 +16,8 @@ solution
 temp
 *.spapp
 
+react-search
+
 # Coverage directory used by tools like istanbul
 coverage
 
